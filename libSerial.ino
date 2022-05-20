@@ -9,12 +9,3 @@ char serialRead() {
   }
   return c;   
 }
-
-void controleerInput() {
-  char input = serialRead();
-
-  switch (input) {
-    case 'R': 
-      resetSlagboomTeller();
-  }
-}

@@ -14,14 +14,16 @@ int spoorwegState;
 
 // Timer variables
 const int SPOORWEG_OVERSTEKEN_NOORD_INTERVAL = 4000;
-const int SPOORWEG_WAARSCHUWING_NOORD_INTERVAL = 4000; // NS
+const int SPOORWEG_WAARSCHUWING_NOORD_INTERVAL = 4000;
 const int SPOORWEG_IDLE_INTERVAL = 3000;
-const int SPOORWEG_OVERSTEKEN_ZUID_INTERVAL = 4000; //NS
+const int SPOORWEG_OVERSTEKEN_ZUID_INTERVAL = 4000; 
 const int SPOORWEG_WAARSCHUWING_ZUID_INTERVAL = 4000;
 unsigned long previousMillis;
 
-const int BUZZER_FREQUENTIE = 1000;
-const int BUZZER_INTERVAL = 1000;
+const int BUZZER_BEEP_FREQUENTIE = 1000;
+const int BUZZER_BEEP_INTERVAL = 200;
+
+const int DISPLAY_INTERVAL = 1000;
 
 void spoorwegOvergang_Setup() {
   previousMillis = 0;
@@ -38,11 +40,11 @@ void spoorwegOvergang_Loop() {
         spoorwegState = SPOORWEG_STATE_SLUITEN;
         spoorweg_Sluiten_Entry();
       } else if (ontruimingstijdVerlopen(previousMillis, SPOORWEG_IDLE_INTERVAL)) {
-        if (isClicked(N))  {
+        if (isClicked(getN()))  {
           spoorweg_Idle_Exit();
           spoorwegState = SPOORWEG_STATE_OVERSTEKEN_NOORD;
           spoorweg_Oversteken_Noord_Entry();
-        } else if (isClicked(Z)) {
+        } else if (isClicked(getZ())) {
           spoorweg_Idle_Exit();
           spoorwegState = SPOORWEG_STATE_OVERSTEKEN_ZUID;
           spoorweg_Oversteken_Zuid_Entry();
@@ -216,7 +218,7 @@ void spoorweg_Sluiten_Entry() {
 
 void spoorweg_Sluiten_Do() {
   verkeerslichtNoordEnZuidGeelKnipperen();
-  buzzerBeep(BUZZER_FREQUENTIE, BUZZER_INTERVAL);
+  buzzerBeep(BUZZER_BEEP_FREQUENTIE, BUZZER_BEEP_INTERVAL);
   servoOpen();
 }
 
@@ -248,7 +250,7 @@ void spoorweg_Openen_Entry() {
 void spoorweg_Openen_Do() {
   verkeerslichtNoordEnZuidGeelKnipperen();
   servoSluiten();
-  buzzerBeep(BUZZER_FREQUENTIE, BUZZER_INTERVAL);
+  buzzerBeep(BUZZER_BEEP_FREQUENTIE, BUZZER_BEEP_INTERVAL);
 }
 
 void spoorweg_Openen_Exit() {
@@ -258,11 +260,12 @@ void spoorweg_Openen_Exit() {
 // --- SPOORWEG_STATE_VRIJGEVEN  -----------
 void spoorweg_Vrijgeven_Entry() {
   Serial.println("State: VRIJGEGEVEN");
-  Serial.println((String)"De slagboom is nu " + slagboomTeller + " keer open en dicht gegaan");
+  Serial.println((String)"De slagboom is nu " + slagboomTeller + " keer open geweest");
   displayNumber(5);
 }
 
 void spoorweg_Vrijgeven_Do() {
+  displayCountdownFromFive(DISPLAY_INTERVAL);
   //  buzzerBeep(1000, 2000);
   verkeerslichtNoordEnZuidGeelKnipperen();
 }

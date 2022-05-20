@@ -21,7 +21,7 @@ void displayNumber(byte number) {
   setShiftRegister(number);
 }
 
-void displayCountdown(int interval) {
+void displayCountdownFromFive(int interval) {
   unsigned long currentMillis = millis();
   countdownReset = false;
   if (currentMillis >= displayPreviousMillis + interval) {

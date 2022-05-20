@@ -28,12 +28,34 @@ boolean treinGedetecteerdOversteken() {
 }
 
 boolean treinGepasseerd() {
-  if ((isClicked(W) && laatsteRichting == O) || (isClicked(O) && laatsteRichting == W)) {
-    return true;
-  }
-  return false;
+  return (isClicked(W) && laatsteRichting == O) || (isClicked(O) && laatsteRichting == W);
 }
 
 boolean ontruimingstijdVerlopen(unsigned long timer, unsigned long interval) {
   return timerIsPassed(timer, interval);
+}
+
+void controleerInput() {
+  char input = serialRead();
+
+  switch (input) {
+    case 'R': 
+      resetSlagboomTeller();
+  }
+}
+
+int getN() {
+  return N;
+}
+
+int getO() {
+  return O;
+}
+
+int getZ() {
+  return Z;
+}
+
+int getW() {
+  return W;
 }
