@@ -15,7 +15,7 @@ void servoSetup() {
   servo.write(servoMinimum);
   servoPreviousMillis = 0 - SERVO_INTERVAL;
   servo.attach(SERVOPIN);
-  slagboomTeller = 0;
+  resetSlagboomTeller();
 }
 
 void servoOpen() {

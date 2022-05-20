@@ -13,23 +13,15 @@ void ledControlSetup() {
     ledStatus = false;
 }
 
-void ledControlSetLedOn(int ledNumber) {
-  digitalWrite(ledNumber, HIGH);
-}
-
-void ledControlSetLedOff(int ledNumber) {
-  digitalWrite(ledNumber, LOW);
-}
-
 void ledAllLedsOn() {
   for (int i = 0; i < AANTALLEDS; i++) {
-      ledControlSetLedOn(PINARRAY[i]);
+      ledOn(PINARRAY[i]);
     }
 }
 
 void ledAllLedsOff() {
   for (int i = 0; i < AANTALLEDS; i++) {
-      ledControlSetLedOff(PINARRAY[i]);
+      ledOff(PINARRAY[i]);
     }
 }
 

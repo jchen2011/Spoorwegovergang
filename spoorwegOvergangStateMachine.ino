@@ -22,6 +22,7 @@ unsigned long previousMillis;
 
 const int BUZZER_BEEP_FREQUENTIE = 1000;
 const int BUZZER_BEEP_INTERVAL = 200;
+const int BUZZER_BEEP_TIK_INTERVAL = 2000;
 
 const int DISPLAY_INTERVAL = 1000;
 
@@ -266,7 +267,7 @@ void spoorweg_Vrijgeven_Entry() {
 
 void spoorweg_Vrijgeven_Do() {
   displayCountdownFromFive(DISPLAY_INTERVAL);
-  //  buzzerBeep(1000, 2000);
+  buzzer_Drie_Tikken(BUZZER_BEEP_INTERVAL, BUZZER_BEEP_TIK_INTERVAL);
   verkeerslichtNoordEnZuidGeelKnipperen();
 }
 

@@ -9,55 +9,55 @@ const int ZUID_GROEN_PIN = 3;
 const int GEEL_KNIPPEREN_INTERVAL = 1000;
 
 void verkeerslichtNoordRoodOn() {
-  digitalWrite(NOORD_ROOD_PIN, HIGH);
+  ledOn(NOORD_ROOD_PIN);
 }
 
 void verkeerslichtNoordRoodOff() {
-  digitalWrite(NOORD_ROOD_PIN, LOW);
+  ledOff(NOORD_ROOD_PIN);
 }
 
 void verkeerslichtNoordGeelOn() {
-  digitalWrite(NOORD_GEEL_PIN, HIGH);
+  ledOn(NOORD_GEEL_PIN);
 }
 
 void verkeerslichtNoordGeelOff() {
-  digitalWrite(NOORD_GEEL_PIN, LOW);
+  ledOff(NOORD_GEEL_PIN);
 }
 
 void verkeerslichtNoordGroenOn() {
-  digitalWrite(NOORD_GROEN_PIN, HIGH);
+  ledOn(NOORD_GROEN_PIN);
 }
 
 
 void verkeerslichtNoordGroenOff() {
-  digitalWrite(NOORD_GROEN_PIN, LOW);
+  ledOff(NOORD_GROEN_PIN);
 }
 
 
 void verkeerslichtZuidRoodOn() {
-  digitalWrite(ZUID_ROOD_PIN, HIGH);
+  ledOn(ZUID_ROOD_PIN);
 }
 
 void verkeerslichtZuidRoodOff() {
-  digitalWrite(ZUID_ROOD_PIN, LOW);
+  ledOff(ZUID_ROOD_PIN);
 }
 
 void verkeerslichtZuidGeelOn() {
-  digitalWrite(ZUID_GEEL_PIN, HIGH);
+  ledOn(ZUID_GEEL_PIN);
 }
 
 
 void verkeerslichtZuidGeelOff() {
-  digitalWrite(ZUID_GEEL_PIN, LOW);
+  ledOff(ZUID_GEEL_PIN);
 }
 
 void verkeerslichtZuidGroenOn() {
-  digitalWrite(ZUID_GROEN_PIN, HIGH);
+  ledOn(ZUID_GROEN_PIN);
 }
 
 
 void verkeerslichtZuidGroenOff() {
-  digitalWrite(ZUID_GROEN_PIN, LOW);
+  ledOff(ZUID_GROEN_PIN);
 }
 
 void verkeerslichtNoordEnZuidGeelKnipperen() {
